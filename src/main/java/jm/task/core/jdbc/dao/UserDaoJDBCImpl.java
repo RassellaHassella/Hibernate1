@@ -11,11 +11,12 @@ import java.util.List;
 public class UserDaoJDBCImpl extends Util implements UserDao {
     Connection connection = getConnection();
 
+
     public UserDaoJDBCImpl() {
 
     }
 
-    public void createUsersTable() throws SQLException {
+    public void createUsersTable() {
         String sql = "CREATE TABLE User (Id BIGINT PRIMARY KEY AUTO_INCREMENT, " +
                 "name TINYTEXT, lastName TINYTEXT, age TINYINT)";
         Statement statement = null;
@@ -29,7 +30,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     }
 
 
-    public void dropUsersTable() throws SQLException {
+    public void dropUsersTable() {
         String sql = "DROP TABLE User";
         try {
             Statement statement = connection.createStatement();
@@ -40,7 +41,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         }
     }
 
-    public void saveUser(String name, String lastName, byte age) throws SQLException {
+    public void saveUser(String name, String lastName, byte age) {
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO User (name, lastName, age) VALUES (?,?,?)";
         try {
@@ -57,7 +58,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     }
 
-    public void removeUserById(long id) throws SQLException {
+    public void removeUserById(long id) {
         PreparedStatement preparedStatement = null;
         String sql = "DELETE FROM User WHERE id = ?";
         try {
@@ -72,7 +73,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     }
 
 
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
         String sql = "SELECT ID, name, lastName, age from User";
         Statement statement = null;
@@ -95,8 +96,8 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         return userList;
     }
 
-    public void cleanUsersTable() throws SQLException {
-        String sql = "DELETE from User";
+    public void cleanUsersTable() {
+        String sql = "TRUNCATE TABLE User";
         Statement statement = null;
         try {
             statement = connection.createStatement();
