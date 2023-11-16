@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public void dropUsersTable() {
-
         userDao.dropUsersTable();
     }
 
@@ -30,6 +29,8 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> getAllUsers() {
+
+        System.out.println(userDao.getAllUsers());
         return userDao.getAllUsers();
     }
 
