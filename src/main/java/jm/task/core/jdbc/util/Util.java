@@ -1,17 +1,11 @@
-package net.javaguides.hibernate.util;
-
-
+package jm.task.core.jdbc.util;
 import java.util.Properties;
-
 import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-
-//import net.javaguides.hibernate.model.Student;
-
 public class Util {
     private static SessionFactory sessionFactory;
     public static SessionFactory getSessionFactory() {
@@ -20,7 +14,7 @@ public class Util {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/mydbtest?useSSL=false&amp;serverTimezone=UTC");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/mydbtest?useSSL=false&serverTimezone=UTC");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "rootroot");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
